@@ -1,6 +1,6 @@
-# AFAD API Hizmeti
+# AFAD Deprem API Hizmeti
 
-T.C. İçişleri Bakanlığı Afet ve Acil Durum Yönetimi Başkanlığı web sitesinden çekilen verilerle sunulan gayriresmi bir API servisidir.
+T.C. İçişleri Bakanlığı Afet ve Acil Durum Yönetimi Başkanlığı web sitesinden çekilen, son deprem verileriyle sunulan **gayriresmi** bir API servisidir.
 
 ## Açık Endpointler
 
