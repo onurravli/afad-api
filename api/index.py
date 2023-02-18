@@ -43,25 +43,19 @@ app.config['JSON_AS_ASCII'] = False
 def son_deprem():
     return earthquakes[0]
 
-@app.route('/depremler/')
-def depremler():
-    return earthquakes  
-
-# @app.route('/depremler/<string:yer>')
-# def depremler_yer(yer):
-#     return [i for i in earthquakes if yer in i['yer']]
-
-@app.route('/<string:yer>')
-def depremler_yer(yer):
-    for eq in earthquakes:
-        if yer in eq['yer']:
-            return eq
-        else:
-            return {"error": "Aradığınız yerde deprem kaydı bulunamadı."}
-
 @app.route('/')
-def home():
-    return {"error": "Herhangi bir endpointe istek atmadınız. Açık endpointler: /son-deprem/, /depremler/, /depremler/<yer>."}
+def depremler():
+    return earthquakes
+
+@app.route('/yer/<string:yer>')
+def deprem_yer(yer):
+    trueEarthquakes = []
+    for earthquake in earthquakes:
+        if yer.lower() in earthquake['yer'].lower():
+            trueEarthquakes.append(earthquake)
+    if len(trueEarthquakes) > 0:
+        return trueEarthquakes
+    return {"error": "Deprem bulunamadı."}, 404
 
 @app.errorhandler(404)
 def page_not_found(e):
