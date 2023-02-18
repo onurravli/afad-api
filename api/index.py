@@ -45,7 +45,7 @@ def depremler():
 
 @app.route('/depremler/<string:yer>')
 def depremler_yer(yer):
-    return [i for i in earthquakes if i['yer'] == yer]
+    return [i for i in earthquakes if yer in i['yer']]
 
 @app.route('/')
 def home():
