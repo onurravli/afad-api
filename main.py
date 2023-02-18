@@ -54,4 +54,7 @@ class Depremler(Resource):
 if __name__ == '__main__':
     api.add_resource(Main, '/')
     api.add_resource(Depremler, '/depremler')
+    @app.route("/")
+    def index():
+        return {'error': 'herhangi bir endpoint belirtilmedi'}
     app.run(debug=True)
