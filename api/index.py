@@ -61,7 +61,7 @@ def depremler_yer(yer):
 
 @app.route('/')
 def home():
-    return {"error": "Herhangi bir endpointe istek atmadınız. Lütfen /depremler veya /depremler/<yer> endpointlerinden birine istek atınız."}
+    return {"error": "Herhangi bir endpointe istek atmadınız. Açık endpointler: /son-deprem/, /depremler/, /depremler/<yer>."}
 
 @app.errorhandler(404)
 def page_not_found(e):
