@@ -50,11 +50,10 @@ class Depremler(Resource):
     def get(self):
         return earthquakes
 
+@app.route("/")
+def index():
+    return {'error': 'herhangi bir endpoint belirtilmedi'}
 
-if __name__ == '__main__':
-    api.add_resource(Main, '/')
-    api.add_resource(Depremler, '/depremler')
-    @app.route("/")
-    def index():
-        return {'error': 'herhangi bir endpoint belirtilmedi'}
-    app.run(debug=True)
+@app.route("/depremler")
+def depremler():
+    return earthquakes
