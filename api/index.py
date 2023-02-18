@@ -39,13 +39,25 @@ for tr in table_rows:
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
+@app.route('/son-deprem/')
+def son_deprem():
+    return earthquakes[0]
+
 @app.route('/depremler/')
 def depremler():
     return earthquakes  
 
-@app.route('/depremler/<string:yer>')
+# @app.route('/depremler/<string:yer>')
+# def depremler_yer(yer):
+#     return [i for i in earthquakes if yer in i['yer']]
+
+@app.route('/<string:yer>')
 def depremler_yer(yer):
-    return [i for i in earthquakes if yer in i['yer']]
+    for eq in earthquakes:
+        if yer in eq['yer']:
+            return eq
+        else:
+            return {"error": "Aradığınız yerde deprem kaydı bulunamadı."}
 
 @app.route('/')
 def home():
