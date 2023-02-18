@@ -50,4 +50,4 @@ def depremler_yer(yer):
 
 @app.route('/')
 def home():
-    return 'Home Page Route'
+    return {"error": "Herhangi bir endpointe istek atmadınız. Lütfen /depremler veya /depremler/<yer> endpointlerinden birine istek atınız."}
