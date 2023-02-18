@@ -40,20 +40,14 @@ app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 api = Api(app)
 
-
-class Main(Resource):
-    def get(self):
-        return {'error': 'herhangi bir endpoint belirtilmedi'}
-
-
-class Depremler(Resource):
-    def get(self):
-        return earthquakes
-
-@app.route("/")
-def index():
-    return {'error': 'herhangi bir endpoint belirtilmedi'}
-
-@app.route("/depremler")
+@app.route('/depremler/')
 def depremler():
-    return earthquakes
+    return earthquakes  
+
+@app.route('/depremler/<string:yer>')
+def depremler_yer(yer):
+    return [i for i in earthquakes if i['yer'] == yer]
+
+@app.route('/')
+def home():
+    return 'Home Page Route'
